@@ -1,7 +1,11 @@
-const Card = ({ image, onClick }) => {
+interface CProps {
+    jword: string
+}
+
+const Card = ({ jword }: CProps) => {
     return (
         <div className="card">
-            <image alt="" src={image} onClick={onClick}></image>
+            <h6>{jword}</h6>
         </div>
     )
 }

@@ -1,14 +1,25 @@
-import { useState } from 'react'
 import './App.css'
 import Card from './components/Card'
+import genWordArray from './utilities/wordArrayGen'
 
 function App() {
+
+  const wordArray = genWordArray();
 
   return (
     <>
       <h1>Japanese Conjugator</h1>
-      <div>
-        <Card></Card>
+      <div className="grid">
+        {wordArray.map((word) => {
+          const { jword, id } = word
+          console.log(`mapped: ${word}`)
+          return (
+            <Card
+              key={id}
+              jword={jword}></Card>
+          )
+        })}
+
       </div>
     </>
   )
