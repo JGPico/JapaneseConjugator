@@ -5,42 +5,30 @@
   text-align: center;
 }
 
-.grid {
+.grid-letters {
   gap: 1.25rem;
   display: grid;
   margin: 3rem auto;
-  grid-template-columns: repeat(4, auto);
+  grid-template-columns: repeat(5, auto);
+  border-radius: 25px;
+  background: gray;
+}
+
+.grid-letters p {
+  font-size: 50px;
+}
+
+.grid-verbs {
+  gap: 1.25rem;
+  display: grid;
+  margin: 3rem auto;
+  grid-template-columns: repeat(8, auto);
   border-radius: 25px;
   background: gray;
 }
 
 .word-font {
   font-size: 30px;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 @media (prefers-reduced-motion: no-preference) {

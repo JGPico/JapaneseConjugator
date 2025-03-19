@@ -4,17 +4,33 @@ import genWordArray from './utilities/wordArrayGen'
 
 function App() {
 
-  const wordArray = genWordArray();
+  const wordList = ["レモン", "ライム", "泳ぐ", "食べる", "守る", "読む", "寝る", "飲む"];
+  const charList = ["あ", "え", "い", "お", "う", "さ", "せ", "し", "そ", "す"];
+
+  const wordArray = genWordArray(wordList);
+  const charArray = genWordArray(charList);
+
   document.body.style = 'background: lightgray;';
 
   return (
     <>
 
       <h1>Japanese Conjugator</h1>
-      <div className="grid">
+
+      <div className="grid-letters">
+        {charArray.map((char) => {
+          const { jword, id } = char
+          return (
+            <Card
+              key={id}
+              jword={jword}></Card>
+          )
+        })}
+      </div>
+
+      <div className="grid-verbs">
         {wordArray.map((word) => {
           const { jword, id } = word
-          console.log(`mapped: ${word}`)
           return (
             <Card
               key={id}
