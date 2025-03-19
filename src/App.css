@@ -10,6 +10,12 @@
   display: grid;
   margin: 3rem auto;
   grid-template-columns: repeat(4, auto);
+  border-radius: 25px;
+  background: gray;
+}
+
+.word-font {
+  font-size: 30px;
 }
 
 .logo {

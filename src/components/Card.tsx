@@ -5,7 +5,7 @@ interface CProps {
 const Card = ({ jword }: CProps) => {
     return (
         <div className="card">
-            <h6>{jword}</h6>
+            <p className="word-font">{jword}</p>
         </div>
     )
 }

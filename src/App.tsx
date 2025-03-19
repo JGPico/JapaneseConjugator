@@ -5,9 +5,11 @@ import genWordArray from './utilities/wordArrayGen'
 function App() {
 
   const wordArray = genWordArray();
+  document.body.style = 'background: lightgray;';
 
   return (
     <>
+
       <h1>Japanese Conjugator</h1>
       <div className="grid">
         {wordArray.map((word) => {
@@ -21,6 +23,7 @@ function App() {
         })}
 
       </div>
+
     </>
   )
 }
