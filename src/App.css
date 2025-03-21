@@ -5,6 +5,15 @@
   text-align: center;
 }
 
+.grid-display {
+  gap: 1.25rem;
+  display: grid;
+  margin: 3rem auto;
+  grid-template-columns: repeat(5, auto);
+  border-radius: 25px;
+  background: rgb(146, 132, 132);
+}
+
 .grid-letters {
   gap: 1.25rem;
   display: grid;
