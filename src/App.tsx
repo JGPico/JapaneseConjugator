@@ -15,6 +15,11 @@ function App() {
   // This needs a function to add to and remove from on button press instead
   const displayArray = genWordArray(displayList)
 
+  const handleClick = () => {
+    console.log(`display[0]: ${displayList[0]}`)
+    return null;
+  }
+
   document.body.style = 'background: lightgray;';
 
   return (
@@ -39,7 +44,8 @@ function App() {
           return (
             <Card
               key={id}
-              jword={jword}></Card>
+              jword={jword}
+              onClick={() => { handleClick() }}></Card>
           )
         })}
       </div>
@@ -50,7 +56,8 @@ function App() {
           return (
             <Card
               key={id}
-              jword={jword}></Card>
+              jword={jword}
+              onClick={() => { handleClick() }}></Card>
           )
         })}
 

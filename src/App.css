@@ -14,6 +14,10 @@
   background: rgb(146, 132, 132);
 }
 
+.grid-display p {
+  font-size: 50px;
+}
+
 .grid-letters {
   gap: 1.25rem;
   display: grid;
@@ -23,7 +27,7 @@
   background: gray;
 }
 
-.grid-letters p {
+.grid-letters button {
   font-size: 50px;
 }
 
@@ -36,7 +40,7 @@
   background: gray;
 }
 
-.word-font {
+.grid-verbs button {
   font-size: 30px;
 }
 

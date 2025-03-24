@@ -1,11 +1,13 @@
 interface CProps {
     jword: string
+    onClick: () => void
 }
 
-const Card = ({ jword }: CProps) => {
+const Card = ({ jword, onClick }: CProps) => {
+
     return (
         <div className="card">
-            <p className="word-font">{jword}</p>
+            <button onClick={onClick}>{jword}</button>
         </div>
     )
 }
