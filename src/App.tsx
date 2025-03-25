@@ -16,9 +16,17 @@ function App() {
 
   // This needs a function to add to and remove from on button press instead
 
-  const handleClick = (j: string) => {
-    console.log(`jword: ${j}`)
-    return null;
+  const handleClickLetter = (j: string) => {
+    setDisplayArray([...displayArray, { jword: j, id: Math.random() }])
+  }
+
+  const handleClickWord = (j: string) => {
+    setDisplayArray([]);
+    const tempArr = [];
+    for (const char of j) {
+      tempArr.push({ jword: char, id: Math.random() })
+    }
+    setDisplayArray([...displayArray, ...tempArr])
   }
 
   document.body.style = 'background: lightgray;';
@@ -47,7 +55,7 @@ function App() {
             <Card
               key={id}
               jword={jword}
-              onClick={() => { handleClick(jword) }}></Card>
+              onClick={() => { handleClickLetter(jword) }}></Card>
           )
         })}
       </div>
@@ -59,7 +67,7 @@ function App() {
             <Card
               key={id}
               jword={jword}
-              onClick={() => { handleClick(jword) }}></Card>
+              onClick={() => { handleClickWord(jword) }}></Card>
           )
         })}
 
