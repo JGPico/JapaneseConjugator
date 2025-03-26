@@ -11,7 +11,7 @@
   margin: 3rem auto;
   grid-template-columns: repeat(5, auto);
   border-radius: 25px;
-  background: rgb(146, 132, 132);
+  background: var(--divgray);
 }
 
 .grid-display p {
@@ -24,7 +24,7 @@
   margin: 3rem auto;
   grid-template-columns: repeat(5, auto);
   border-radius: 25px;
-  background: gray;
+  background: var(--divgray);
 }
 
 .grid-letters button {
@@ -37,11 +37,15 @@
   margin: 3rem auto;
   grid-template-columns: repeat(8, auto);
   border-radius: 25px;
-  background: gray;
+  background: var(--divgray);
 }
 
 .grid-verbs button {
   font-size: 30px;
+}
+
+.light-font {
+  color: var(--lightfont);
 }
 
 @media (prefers-reduced-motion: no-preference) {

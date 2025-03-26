@@ -7,15 +7,19 @@ import genWordArray from './utilities/wordArrayGen'
 
 function App() {
 
+  interface charObj {
+    id: number;
+    jword: string;
+  }
+
   const wordList = ["レモン", "ライム", "泳ぐ", "食べる", "守る", "読む", "寝る", "飲む"];
   const charList = ["あ", "え", "い", "お", "う", "さ", "せ", "し", "そ", "す"];
-  const [displayArray, setDisplayArray] = useState(genWordArray(["L", "M", "N"]));
+  const [displayArray, setDisplayArray] = useState<charObj[]>([]);
 
   const wordArray = genWordArray(wordList);
   const charArray = genWordArray(charList);
 
-  // This needs a function to add to and remove from on button press instead
-
+  // functions **************
   const handleClickLetter = (j: string) => {
     setDisplayArray([...displayArray, { jword: j, id: Math.random() }])
   }
@@ -28,13 +32,14 @@ function App() {
     }
     setDisplayArray([...displayArray, ...tempArr])
   }
+  // functions ***************
 
-  document.body.style = 'background: lightgray;';
+  document.body.style = 'background:var(--backgroundgreen)';
 
   return (
     <>
 
-      <h1>Japanese Conjugator</h1>
+      <h1 className="light-font">Japanese Conjugator</h1>
       <ButtonComponent text="Clear Display" onClick={() => { setDisplayArray(genWordArray([])) }}></ButtonComponent>
 
       <div className="grid-display">
