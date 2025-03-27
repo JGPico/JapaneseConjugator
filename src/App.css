@@ -5,6 +5,14 @@
   text-align: center;
 }
 
+.wrapper {
+  gap: 1.25rem;
+  display: flexbox;
+  margin: 3rem auto;
+  border-radius: 25px;
+  background: var(--backgroundgreen);
+}
+
 .grid-display {
   gap: 1.25rem;
   display: grid;
@@ -20,15 +28,18 @@
 
 .grid-letters {
   gap: 1.25rem;
+  column-gap: .75rem;
+  row-gap: 0rem;
   display: grid;
-  margin: 3rem auto;
+  margin: 1rem auto;
   grid-template-columns: repeat(5, auto);
   border-radius: 25px;
   background: var(--divgray);
 }
 
 .grid-letters button {
-  font-size: 50px;
+  font-size: 30px;
+  background-color: hsl(0, 0%, 84%);
 }
 
 .grid-verbs {
@@ -42,6 +53,7 @@
 
 .grid-verbs button {
   font-size: 30px;
+  background-color: hsl(0, 0%, 84%);
 }
 
 .light-font {

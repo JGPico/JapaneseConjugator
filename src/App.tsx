@@ -42,39 +42,43 @@ function App() {
       <h1 className="light-font">Japanese Conjugator</h1>
       <ButtonComponent text="Clear Display" onClick={() => { setDisplayArray(genWordArray([])) }}></ButtonComponent>
 
-      <div className="grid-display">
-        {displayArray.length > 0 ? displayArray.map((char) => {
-          const { jword, id } = char
-          return (
-            <WordDisplay
-              key={id}
-              jchar={jword}></WordDisplay>
-          )
-        }) : <WordDisplay key={1} jchar={". . ."}></WordDisplay>}
-      </div>
+      <div className="wrapper">
 
-      <div className="grid-letters">
-        {charArray.map((char) => {
-          const { jword, id } = char
-          return (
-            <Card
-              key={id}
-              jword={jword}
-              onClick={() => { handleClickLetter(jword) }}></Card>
-          )
-        })}
-      </div>
+        <div className="grid-display">
+          {displayArray.length > 0 ? displayArray.map((char) => {
+            const { jword, id } = char
+            return (
+              <WordDisplay
+                key={id}
+                jchar={jword}></WordDisplay>
+            )
+          }) : <WordDisplay key={1} jchar={". . ."}></WordDisplay>}
+        </div>
 
-      <div className="grid-verbs">
-        {wordArray.map((word) => {
-          const { jword, id } = word
-          return (
-            <Card
-              key={id}
-              jword={jword}
-              onClick={() => { handleClickWord(jword) }}></Card>
-          )
-        })}
+        <div className="grid-letters">
+          {charArray.map((char) => {
+            const { jword, id } = char
+            return (
+              <Card
+                key={id}
+                jword={jword}
+                onClick={() => { handleClickLetter(jword) }}></Card>
+            )
+          })}
+        </div>
+
+        <div className="grid-verbs">
+          {wordArray.map((word) => {
+            const { jword, id } = word
+            return (
+              <Card
+                key={id}
+                jword={jword}
+                onClick={() => { handleClickWord(jword) }}></Card>
+            )
+          })}
+
+        </div>
 
       </div>
 
