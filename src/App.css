@@ -17,7 +17,7 @@
   gap: 1.25rem;
   display: grid;
   margin: 3rem auto;
-  grid-template-columns: repeat(5, auto);
+  grid-template-columns: repeat(10, auto);
   border-radius: 25px;
   background: var(--divgray);
 }
@@ -40,13 +40,14 @@
 .grid-letters button {
   font-size: 30px;
   background-color: hsl(0, 0%, 84%);
+  color: black;
 }
 
 .grid-verbs {
   gap: 1.25rem;
   display: grid;
   margin: 3rem auto;
-  grid-template-columns: repeat(8, auto);
+  grid-template-columns: repeat(4, auto);
   border-radius: 25px;
   background: var(--divgray);
 }
@@ -54,6 +55,7 @@
 .grid-verbs button {
   font-size: 30px;
   background-color: hsl(0, 0%, 84%);
+  color: black;
 }
 
 .light-font {

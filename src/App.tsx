@@ -20,17 +20,20 @@ function App() {
   const charArray = genWordArray(charList);
 
   // functions **************
+  const handleClear = () => {
+    setDisplayArray(genWordArray([]));
+  }
+
   const handleClickLetter = (j: string) => {
     setDisplayArray([...displayArray, { jword: j, id: Math.random() }])
   }
 
   const handleClickWord = (j: string) => {
-    setDisplayArray([]);
     const tempArr = [];
     for (const char of j) {
       tempArr.push({ jword: char, id: Math.random() })
     }
-    setDisplayArray([...displayArray, ...tempArr])
+    setDisplayArray([...tempArr])
   }
   // functions ***************
 
@@ -40,7 +43,7 @@ function App() {
     <>
 
       <h1 className="light-font">Japanese Conjugator</h1>
-      <ButtonComponent text="Clear Display" onClick={() => { setDisplayArray(genWordArray([])) }}></ButtonComponent>
+      <ButtonComponent text="Clear Display" onClick={() => handleClear()}></ButtonComponent>
 
       <div className="wrapper">
 
@@ -74,7 +77,7 @@ function App() {
               <Card
                 key={id}
                 jword={jword}
-                onClick={() => { handleClickWord(jword) }}></Card>
+                onClick={() => { handleClickWord(jword); }}></Card>
             )
           })}
 
