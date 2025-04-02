@@ -28,16 +28,20 @@
 
 .grid-letters {
   gap: 1.25rem;
-  column-gap: .75rem;
+  column-gap: .01rem;
   row-gap: 0rem;
   display: grid;
   margin: 1rem auto;
-  grid-template-columns: repeat(5, auto);
+  grid-template-columns: repeat(9, auto);
   border-radius: 25px;
   background: var(--divgray);
 }
 
 .grid-letters button {
+  margin-left: .1rem;
+  margin-right: .1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
   font-size: 30px;
   background-color: hsl(0, 0%, 84%);
   color: black;
@@ -69,7 +73,7 @@
 }
 
 .card {
-  padding: 2em;
+  padding: .9em;
 }
 
 .read-the-docs {
