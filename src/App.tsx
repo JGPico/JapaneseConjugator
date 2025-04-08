@@ -64,6 +64,12 @@ function App() {
           }) : <WordDisplay key={1} jchar={". . ."}></WordDisplay>}
         </div>
 
+        <div className="placard">
+          <p>form</p>
+          <p>form1</p>
+          <p>form2</p>
+        </div>
+
         <div className="grid-letters">
           {charArray.map((char) => {
             const { jword, id } = char
