@@ -8,11 +8,11 @@
 .wrapper {
   display: grid;
   grid-template-rows: .5fr 2fr 1fr;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1fr 4fr 2fr;
   grid-template-areas:
-    'display display'
-    'letter-title letter'
-    'verb verb';
+    'display display display'
+    'letter-title letter conjugations'
+    'verb verb verb';
   border-radius: 25px;
   background: var(--backgroundgreen);
 }
@@ -84,6 +84,16 @@
 .placard p {
   border-width: 14px, 14px;
   border-color: hsl(0, 0%, 0%);
+}
+
+.grid-conjugation {
+  grid-area: conjugations;
+  width: 10em;
+  margin: 1em;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  border-radius: 25px;
+  background: var(--divgray);
 }
 
 .light-font {

@@ -95,6 +95,15 @@ function App() {
 
         </div>
 
+        <div className="grid-conjugation">
+          {["lemon", "egg", "squid"].map((conj) => {
+            // add key to component
+            return (
+              <p>{conj}</p>
+            )
+          })}
+        </div>
+
       </div>
 
     </>
