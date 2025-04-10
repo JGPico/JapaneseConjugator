@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import './App.css'
-import Card from './components/Card'
+import './App.css';
+import Card from './components/Card';
 import WordDisplay from './components/WordDisplay';
 import ButtonComponent from './components/Button';
+import TextBox from './components/TextBox';
 import genWordArray from './utilities/wordArrayGen'
 
 function App() {
@@ -20,10 +21,20 @@ function App() {
     "え", "け", "げ", "せ", "て", "ね", "べ", "め", "れ",
     "お", "ご", "ご", "そ", "と", "の", "ぼ", "も", "ろ",
     "や", "ゆ", "よ", "わ", "を", "ん"];
+  const conjList = [
+    "ます", "ました", "ません", "ませんでした"
+    , "なかった", "ない", "る", "ましょう"
+    , "たい", "たかった", "たくない", "たくなかった"
+    , "られなかった", "られない", "られた", "られる"
+    , "られます", "られました", "られません", "られませんでした"
+    , "う", "よう", "こと", "の"
+    , "て", "た", "ないで",
+  ]
   const [displayArray, setDisplayArray] = useState<charObj[]>([]);
 
   const wordArray = genWordArray(wordList);
   const charArray = genWordArray(charList);
+  const conjArray = genWordArray(conjList);
 
   // functions **************
   const handleClear = () => {
@@ -65,9 +76,11 @@ function App() {
         </div>
 
         <div className="placard">
-          <p>form</p>
           <p>form1</p>
           <p>form2</p>
+          <p>form3</p>
+          <p>form4</p>
+          <p>form5</p>
         </div>
 
         <div className="grid-letters">
@@ -96,10 +109,11 @@ function App() {
         </div>
 
         <div className="grid-conjugation">
-          {["lemon", "egg", "squid"].map((conj) => {
+          {conjArray.map((conj) => {
             // add key to component
+            const { jword, id } = conj
             return (
-              <p>{conj}</p>
+              <TextBox key={id} text={jword}></TextBox>
             )
           })}
         </div>

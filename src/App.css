@@ -6,6 +6,7 @@
 }
 
 .wrapper {
+  justify-content: center;
   display: grid;
   grid-template-rows: .5fr 2fr 1fr;
   grid-template-columns: 1fr 4fr 2fr;
@@ -79,21 +80,38 @@
   grid-template-columns: 1fr;
   border-radius: 25px;
   background: var(--divgray);
+
+  gap: 1.25rem;
+  column-gap: .01rem;
+  row-gap: 0rem;
 }
 
 .placard p {
-  border-width: 14px, 14px;
-  border-color: hsl(0, 0%, 0%);
+  margin-left: .1rem;
+  margin-right: .1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  align-items: center;
+  height: 5rem;
+  font-size: 30px;
+  background-color: hsl(0, 0%, 84%);
+  border-radius: 25px;
+  color: black;
 }
 
 .grid-conjugation {
   grid-area: conjugations;
-  width: 10em;
+  width: 30em;
   margin: 1em;
   display: grid;
-  grid-template-columns: repeat(3, auto);
+  grid-template-columns: repeat(4, auto);
   border-radius: 25px;
   background: var(--divgray);
+}
+
+.grid-conjugation p {
+  border: solid;
+  border-radius: 25px;
 }
 
 .light-font {
