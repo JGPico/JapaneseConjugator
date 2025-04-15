@@ -42,7 +42,10 @@ function App() {
   }
 
   const handleClickLetter = (j: string) => {
-    setDisplayArray([...displayArray, { jword: j, id: Math.random() }])
+    const newArr = [...displayArray].slice(0, -1);
+    newArr.push({ jword: j, id: Math.random() });
+
+    setDisplayArray([...newArr])
   }
 
   const handleClickWord = (j: string) => {
