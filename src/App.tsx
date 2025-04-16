@@ -84,6 +84,7 @@ function App() {
           <p>form3</p>
           <p>form4</p>
           <p>form5</p>
+          <p className="invisible"></p>
         </div>
 
         <div className="grid-letters">

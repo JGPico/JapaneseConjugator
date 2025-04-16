@@ -76,27 +76,33 @@
   width: 10em;
   margin: 1em;
   display: grid;
-  grid-template-rows: 100px;
-  grid-template-columns: 1fr;
+
+  grid-template-rows: auto;
   border-radius: 25px;
   background: var(--divgray);
+  row-gap: .1rem;
 
-  gap: 1.25rem;
-  column-gap: .01rem;
-  row-gap: 0rem;
+  align-items: start;
 }
 
 .placard p {
-  margin-left: .1rem;
-  margin-right: .1rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: .1rem;
+  margin-top: 1rem;
+  margin-bottom: .1rem;
   height: 5rem;
+  width: 60%;
   font-size: 30px;
   background-color: hsl(0, 0%, 84%);
   border-radius: 25px;
   color: black;
+}
+
+.invisible {
+  visibility: hidden;
 }
 
 .grid-conjugation {
