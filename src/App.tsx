@@ -22,30 +22,41 @@ function App() {
     "お", "ご", "ご", "そ", "と", "の", "ぼ", "も", "ろ",
     "や", "ゆ", "よ", "わ", "を", "ん"];
   const conjList = [
-    "ます", "ました", "ません", "ませんでした"
-    , "なかった", "ない", "る", "ましょう"
-    , "たい", "たかった", "たくない", "たくなかった"
-    , "られなかった", "られない", "られた", "られる"
-    , "られます", "られました", "られません", "られませんでした"
-    , "う", "よう", "こと", "の"
-    , "て", "た", "ないで",
+    "ます", "ました", "ません", "ませんでした",
+    "なかった", "ない", "る", "ましょう",
+    "たい", "たかった", "たくない", "たくなかった",
+    "られなかった", "られない", "られた", "られる",
+    "られます", "られました", "られません", "られませんでした",
+    "う", "よう", "こと", "の",
+    "て", "た", "ないで",
   ]
   const [displayArray, setDisplayArray] = useState<charObj[]>([]);
 
+  const [lastChar, setLastChar] = useState("empty");
   const wordArray = genWordArray(wordList);
   const charArray = genWordArray(charList);
   const conjArray = genWordArray(conjList);
 
   // functions **************
+
+  const activateChar = (lastChar: string) => {
+    if (lastChar == "う") {
+      setLastChar("う");
+      console.log("it's う!");
+    }
+  }
+
   const handleClear = () => {
     setDisplayArray(genWordArray([]));
+    setLastChar("empty");
   }
 
   const handleClickLetter = (j: string) => {
     const newArr = [...displayArray].slice(0, -1);
     newArr.push({ jword: j, id: Math.random() });
 
-    setDisplayArray([...newArr])
+    activateChar(newArr.slice(-1)[0].jword);
+    setDisplayArray([...newArr]);
   }
 
   const handleClickWord = (j: string) => {
@@ -56,6 +67,7 @@ function App() {
     setDisplayArray([...tempArr])
   }
   // functions ***************
+
 
   document.body.style = 'background:var(--backgroundgreen)';
 
@@ -114,10 +126,9 @@ function App() {
 
         <div className="grid-conjugation">
           {conjArray.map((conj) => {
-            // add key to component
             const { jword, id } = conj
             return (
-              <TextBox key={id} text={jword}></TextBox>
+              <TextBox key={id} text={jword} lastChar={lastChar}></TextBox>
             )
           })}
         </div>

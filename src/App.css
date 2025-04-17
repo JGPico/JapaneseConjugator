@@ -120,6 +120,14 @@
   border-radius: 25px;
 }
 
+.う {
+  background-color: hsl(271, 76%, 53%);
+}
+
+.empty {
+  background-color: var(--divgray);
+}
+
 .light-font {
   color: var(--lightfont);
 }

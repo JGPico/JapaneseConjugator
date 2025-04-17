@@ -1,12 +1,13 @@
 interface TProps {
     text: string
+    lastChar: string
 }
 
-const Card = ({ text }: TProps) => {
+const Card = ({ text, lastChar }: TProps) => {
 
     return (
         <div className="text-box">
-            <p>{text}</p>
+            <p className={lastChar}>{text}</p>
         </div>
     )
 }
