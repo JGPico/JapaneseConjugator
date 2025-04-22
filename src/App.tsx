@@ -21,28 +21,40 @@ function App() {
     "え", "け", "げ", "せ", "て", "ね", "べ", "め", "れ",
     "お", "ご", "ご", "そ", "と", "の", "ぼ", "も", "ろ",
     "や", "ゆ", "よ", "わ", "を", "ん"];
-  const conjList = [
+
+  const conjる = ["こと", "の", "て", "た"]
+  const conjないで = ["ないで"]
+  const conjListBig = [
     "ます", "ました", "ません", "ませんでした",
     "なかった", "ない", "る", "ましょう",
     "たい", "たかった", "たくない", "たくなかった",
     "られなかった", "られない", "られた", "られる",
     "られます", "られました", "られません", "られませんでした",
-    "う", "よう", "こと", "の",
-    "て", "た", "ないで",
+    "う", "よう"
   ]
+  const conjListComplete = conjListBig.concat(conjる, conjないで)
   const [displayArray, setDisplayArray] = useState<charObj[]>([]);
 
   const [lastChar, setLastChar] = useState("empty");
   const wordArray = genWordArray(wordList);
   const charArray = genWordArray(charList);
-  const conjArray = genWordArray(conjList);
+  const conjArray = genWordArray(conjListComplete);
 
   // functions **************
 
-  const activateChar = (lastChar: string) => {
-    if (lastChar == "う") {
-      setLastChar("う");
-      console.log("it's う!");
+  const activateChar = (inputLastChar: string) => {
+
+    switch (inputLastChar) {
+      case "る":
+        console.log("ends in る");
+        setLastChar("る");
+        break;
+      case "た":
+        setLastChar("た");
+        break;
+      default:
+        console.log("default");
+        setLastChar("empty");
     }
   }
 
