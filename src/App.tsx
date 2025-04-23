@@ -5,6 +5,7 @@ import WordDisplay from './components/WordDisplay';
 import ButtonComponent from './components/Button';
 import TextBox from './components/TextBox';
 import genWordArray from './utilities/wordArrayGen'
+import useArray from './utilities/arraySelectHook';
 
 function App() {
 
@@ -22,17 +23,7 @@ function App() {
     "お", "ご", "ご", "そ", "と", "の", "ぼ", "も", "ろ",
     "や", "ゆ", "よ", "わ", "を", "ん"];
 
-  const conjる = ["こと", "の", "て", "た"]
-  const conjないで = ["ないで"]
-  const conjListBig = [
-    "ます", "ました", "ません", "ませんでした",
-    "なかった", "ない", "る", "ましょう",
-    "たい", "たかった", "たくない", "たくなかった",
-    "られなかった", "られない", "られた", "られる",
-    "られます", "られました", "られません", "られませんでした",
-    "う", "よう"
-  ]
-  const conjListComplete = conjListBig.concat(conjる, conjないで)
+  const conjListComplete = useArray("complete")
   const [displayArray, setDisplayArray] = useState<charObj[]>([]);
 
   const [lastChar, setLastChar] = useState("empty");
