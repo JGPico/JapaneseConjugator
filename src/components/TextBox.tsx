@@ -8,7 +8,9 @@ interface TProps {
 const Card = ({ text, lastChar }: TProps) => {
 
     const subConjArr = useArray(lastChar)
-    const cssClass = `text-box-${subConjArr}`;
+    // how do I use this sub array to style some of the text boxes?
+    // if text is in subConjArr, style with according to style-x. x is conjる, etc
+    const cssClass = `text-box-${lastChar}`;
 
     return (
         <div className="text-box">
