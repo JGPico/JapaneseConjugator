@@ -67,6 +67,7 @@ function App() {
     for (const char of j) {
       tempArr.push({ jword: char, id: Math.random() })
     }
+    activateChar(tempArr.slice(-1)[0].jword);
     setDisplayArray([...tempArr])
   }
   // functions ***************
