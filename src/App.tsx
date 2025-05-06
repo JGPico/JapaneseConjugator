@@ -14,7 +14,10 @@ function App() {
     jword: string;
   }
 
-  const wordList = ["レモン", "ライム", "泳ぐ", "食べる", "守る", "読む", "寝る", "飲む"];
+  const wordList = [
+    { word: "レモン", type: "ichidan" }, { word: "ライム", type: "ichidan" }, { word: "泳ぐ", type: "godan" },
+    { word: "食べる", type: "ichidan " }, { word: "守る", type: "godan" }, { word: "読む", type: "ichidan" },
+    { word: "寝る", type: "ichidan" }, { word: "飲む", type: "ichidan" }];
   const charList = [
     "あ", "か", "が", "さ", "た", "な", "ば", "ま", "ら",
     "い", "き", "ぎ", "し", "ち", "に", "び", "み", "り",
@@ -26,6 +29,7 @@ function App() {
   const conjListComplete = useArray("complete")
   const [displayArray, setDisplayArray] = useState<charObj[]>([]);
 
+  const [activeVerbType, setActiveVerbType] = useState("ichidan");
   const [lastChar, setLastChar] = useState("empty");
   const wordArray = genWordArray(wordList);
   const charArray = genWordArray(charList);
@@ -52,6 +56,7 @@ function App() {
   const handleClear = () => {
     setDisplayArray(genWordArray([]));
     setLastChar("empty");
+    setActiveVerbType("ichidan");
   }
 
   const handleClickLetter = (j: string) => {
@@ -62,11 +67,12 @@ function App() {
     setDisplayArray([...newArr]);
   }
 
-  const handleClickWord = (j: string) => {
+  const handleClickWord = (j: string, t: string) => {
     const tempArr = [];
     for (const char of j) {
       tempArr.push({ jword: char, id: Math.random() })
     }
+    setActiveVerbType(t)
     activateChar(tempArr.slice(-1)[0].jword);
     setDisplayArray([...tempArr])
   }
@@ -110,6 +116,7 @@ function App() {
               <Card
                 key={id}
                 jword={jword}
+                type=""
                 onClick={() => { handleClickLetter(jword) }}></Card>
             )
           })}
@@ -121,8 +128,9 @@ function App() {
             return (
               <Card
                 key={id}
-                jword={jword}
-                onClick={() => { handleClickWord(jword); }}></Card>
+                jword={jword.word}
+                type={jword.type}
+                onClick={() => { handleClickWord(jword.word, jword.type); }}></Card>
             )
           })}
 
@@ -132,7 +140,7 @@ function App() {
           {conjArray.map((conj) => {
             const { jword, id } = conj
             return (
-              <TextBox key={id} text={jword} lastChar={lastChar}></TextBox>
+              <TextBox key={id} text={jword} type={activeVerbType} lastChar={lastChar}></TextBox>
             )
           })}
         </div>

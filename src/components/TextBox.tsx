@@ -2,15 +2,17 @@ import useArray from "../utilities/arraySelectHook"
 
 interface TProps {
     text: string
+    type: string
     lastChar: string
 }
 
-const Card = ({ text, lastChar }: TProps) => {
+const Card = ({ text, type, lastChar }: TProps) => {
 
     let cssClass;
     const subConjArr = useArray(lastChar)
-    // how do I use this sub array to style some of the text boxes?
-    // if text is in subConjArr, style according to style-x. x is conjる, etc
+
+    // the text box styles need to light up differently based on the type of verb; ichidan, godan or irregular
+    console.log(type)
     if (subConjArr.includes(text)) {
         cssClass = `text-box-${lastChar}`;
     } else {
