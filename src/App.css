@@ -33,6 +33,10 @@
   margin: 1rem;
 }
 
+.dispButton {
+  margin-left: 1rem;
+}
+
 .grid-letters {
   grid-area: letter;
   gap: 1.25rem;

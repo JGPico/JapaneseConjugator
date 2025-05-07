@@ -11,7 +11,7 @@ const ButtonComponent = ({ text, onClick }: BProps) => {
         onClick();
     }
 
-    return <button onClick={handleMouseEvent}>{text}</button>
+    return <button className="dispButton" onClick={handleMouseEvent}>{text}</button>
 }
 
 export default ButtonComponent;

@@ -48,7 +48,6 @@ function App() {
         setLastChar("た");
         break;
       default:
-        console.log("default");
         setLastChar("empty");
     }
   }
@@ -57,6 +56,18 @@ function App() {
     setDisplayArray(genWordArray([]));
     setLastChar("empty");
     setActiveVerbType("ichidan");
+  }
+
+  const backspace = () => {
+    const newArr = [...displayArray];
+    newArr.pop();
+
+    if (newArr.length > 0) {
+      activateChar(newArr.slice(-1)[0].jword);
+      setDisplayArray([...newArr]);
+    } else {
+      handleClear();
+    }
   }
 
   const handleClickLetter = (j: string) => {
@@ -72,7 +83,7 @@ function App() {
     for (const char of j) {
       tempArr.push({ jword: char, id: Math.random() })
     }
-    setActiveVerbType(t)
+    setActiveVerbType(t);
     activateChar(tempArr.slice(-1)[0].jword);
     setDisplayArray([...tempArr])
   }
@@ -86,6 +97,7 @@ function App() {
 
       <h1 className="light-font">Japanese Conjugator</h1>
       <ButtonComponent text="Clear Display" onClick={() => handleClear()}></ButtonComponent>
+      <ButtonComponent text="Backspace" onClick={() => backspace()}></ButtonComponent>
 
       <div className="wrapper">
 
