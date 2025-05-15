@@ -1,7 +1,6 @@
 
 function useArray(desiredArr: string) {
     // given the last character (desiredArr) return an array that contains the conjugations for that last character
-    console.log(desiredArr);
     const conjる = ["こと", "の", "て", "た"]
     const conjないで = ["ないで"]
     const conjListBig = [

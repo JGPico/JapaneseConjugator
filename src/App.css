@@ -49,7 +49,7 @@
   background: var(--divgray);
 }
 
-.grid-letters button {
+.letter-button-default {
   margin-left: .1rem;
   margin-right: .1rem;
   padding-left: 2rem;
@@ -57,6 +57,16 @@
   font-size: 30px;
   background-color: hsl(0, 0%, 84%);
   color: black;
+}
+
+.letter-button-highlight {
+  margin-left: .1rem;
+  margin-right: .1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  font-size: 30px;
+  background-color: hsl(241, 95%, 22%);
+  color: hsl(182, 71%, 91%);
 }
 
 .grid-verbs {

@@ -12,7 +12,6 @@ const Card = ({ text, type, lastChar }: TProps) => {
     const subConjArr = useArray(lastChar)
 
     // the text box styles need to light up differently based on the type of verb; ichidan, godan or irregular
-    console.log(type)
     if (subConjArr.includes(text)) {
         cssClass = `text-box-${lastChar}`;
     } else {

@@ -23,7 +23,7 @@ function App() {
     "い", "き", "ぎ", "し", "ち", "に", "び", "み", "り",
     "う", "く", "ぐ", "す", "つ", "ぬ", "ぶ", "む", "る",
     "え", "け", "げ", "せ", "て", "ね", "べ", "め", "れ",
-    "お", "ご", "ご", "そ", "と", "の", "ぼ", "も", "ろ",
+    "お", "こ", "ご", "そ", "と", "の", "ぼ", "も", "ろ",
     "や", "ゆ", "よ", "わ", "を", "ん"];
 
   const conjListComplete = useArray("complete")
@@ -37,21 +37,6 @@ function App() {
 
   // functions **************
 
-  const activateChar = (inputLastChar: string) => {
-
-    switch (inputLastChar) {
-      case "る":
-        console.log("ends in る");
-        setLastChar("る");
-        break;
-      case "た":
-        setLastChar("た");
-        break;
-      default:
-        setLastChar("empty");
-    }
-  }
-
   const handleClear = () => {
     setDisplayArray(genWordArray([]));
     setLastChar("empty");
@@ -63,7 +48,7 @@ function App() {
     newArr.pop();
 
     if (newArr.length > 0) {
-      activateChar(newArr.slice(-1)[0].jword);
+      setLastChar(newArr.slice(-1)[0].jword);
       setDisplayArray([...newArr]);
     } else {
       handleClear();
@@ -74,7 +59,7 @@ function App() {
     const newArr = [...displayArray].slice(0, -1);
     newArr.push({ jword: j, id: Math.random() });
 
-    activateChar(newArr.slice(-1)[0].jword);
+    setLastChar(newArr.slice(-1)[0].jword);
     setDisplayArray([...newArr]);
   }
 
@@ -84,7 +69,7 @@ function App() {
       tempArr.push({ jword: char, id: Math.random() })
     }
     setActiveVerbType(t);
-    activateChar(tempArr.slice(-1)[0].jword);
+    setLastChar(tempArr.slice(-1)[0].jword);
     setDisplayArray([...tempArr])
   }
   // functions ***************
@@ -129,6 +114,7 @@ function App() {
                 key={id}
                 jword={jword}
                 type=""
+                lastChar={lastChar}
                 onClick={() => { handleClickLetter(jword) }}></Card>
             )
           })}
@@ -142,6 +128,7 @@ function App() {
                 key={id}
                 jword={jword.word}
                 type={jword.type}
+                lastChar={lastChar}
                 onClick={() => { handleClickWord(jword.word, jword.type); }}></Card>
             )
           })}

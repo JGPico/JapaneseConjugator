@@ -1,14 +1,25 @@
 interface CProps {
     jword: string
     type: string
+    lastChar: string
     onClick: () => void
 }
 
-const Card = ({ jword, type, onClick }: CProps) => {
+const Card = ({ jword, type, lastChar, onClick }: CProps) => {
+
+    let cssClass;
+
+    console.log(`jword: ${jword} lastChar: ${lastChar}`)
+
+    if (jword == lastChar) {
+        cssClass = "letter-button-highlight";
+    } else {
+        cssClass = "letter-button-default";
+    }
 
     return (
         <div className="card">
-            <button onClick={onClick}>{jword}</button>
+            <button className={cssClass} onClick={onClick}>{jword}</button>
         </div>
     )
 }
