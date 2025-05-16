@@ -9,8 +9,6 @@ const Card = ({ jword, type, lastChar, onClick }: CProps) => {
 
     let cssClass;
 
-    console.log(`jword: ${jword} lastChar: ${lastChar}`)
-
     if (jword == lastChar) {
         cssClass = "letter-button-highlight";
     } else {

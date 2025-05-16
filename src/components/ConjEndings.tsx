@@ -1,4 +1,4 @@
-import useArray from "../utilities/arraySelectHook"
+import giveConjugation from "../utilities/arraySelectHook"
 
 interface TProps {
     text: string
@@ -6,14 +6,14 @@ interface TProps {
     lastChar: string
 }
 
-const Card = ({ text, type, lastChar }: TProps) => {
+const ConjEndings = ({ text, type, lastChar }: TProps) => {
 
     let cssClass;
-    const subConjArr = useArray(lastChar)
+    const subConjArr = giveConjugation(lastChar, type)
 
     // the text box styles need to light up differently based on the type of verb; ichidan, godan or irregular
-    if (subConjArr.includes(text)) {
-        cssClass = `text-box-${lastChar}`;
+    if (subConjArr.conjArr.includes(text)) {
+        cssClass = `text-box-${subConjArr.conjCSSTag}`;
     } else {
         cssClass = "text-box";
     }
@@ -25,4 +25,4 @@ const Card = ({ text, type, lastChar }: TProps) => {
     )
 }
 
-export default Card;
+export default ConjEndings;

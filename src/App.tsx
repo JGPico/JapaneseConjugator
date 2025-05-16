@@ -3,9 +3,9 @@ import './App.css';
 import Card from './components/Card';
 import WordDisplay from './components/WordDisplay';
 import ButtonComponent from './components/Button';
-import TextBox from './components/TextBox';
+import ConjEndings from './components/ConjEndings';
 import genWordArray from './utilities/wordArrayGen'
-import useArray from './utilities/arraySelectHook';
+import giveConjugation from './utilities/arraySelectHook';
 
 function App() {
 
@@ -26,10 +26,10 @@ function App() {
     "お", "こ", "ご", "そ", "と", "の", "ぼ", "も", "ろ",
     "や", "ゆ", "よ", "わ", "を", "ん"];
 
-  const conjListComplete = useArray("complete")
+  const [activeVerbType, setActiveVerbType] = useState("ichidan");
+  const conjListComplete = giveConjugation("complete", "ichidan").conjArr
   const [displayArray, setDisplayArray] = useState<charObj[]>([]);
 
-  const [activeVerbType, setActiveVerbType] = useState("ichidan");
   const [lastChar, setLastChar] = useState("empty");
   const wordArray = genWordArray(wordList);
   const charArray = genWordArray(charList);
@@ -139,7 +139,7 @@ function App() {
           {conjArray.map((conj) => {
             const { jword, id } = conj
             return (
-              <TextBox key={id} text={jword} type={activeVerbType} lastChar={lastChar}></TextBox>
+              <ConjEndings key={id} text={jword} type={activeVerbType} lastChar={lastChar}></ConjEndings>
             )
           })}
         </div>

@@ -134,8 +134,12 @@
   border-radius: 25px;
 }
 
-.text-box-る {
+.text-box-conjIchiう {
   background-color: hsl(241, 76%, 53%);
+}
+
+.text-box-conjIchiあ {
+  background-color: hsl(110, 68%, 46%);
 }
 
 .empty {
