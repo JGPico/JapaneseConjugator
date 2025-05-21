@@ -77,6 +77,8 @@ function App() {
 
   document.body.style = 'background:var(--backgroundgreen)';
 
+  // TODO update WordDisplay component to allow displaying conjugations onHover of conjEndings component. 
+
   return (
     <>
 

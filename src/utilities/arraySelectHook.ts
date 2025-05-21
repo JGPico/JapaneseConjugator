@@ -3,15 +3,16 @@ function giveConjugation(lastChar: string, activeVerbType: string) {
     // given the last character (lastChar) return an array that contains the conjugations for that last character
     const conjIchiう = ["こと", "の", "て", "た"]
     const conjIchiあ = ["ないで", "なかった", "ない"]
-    const conjListBig = [
+    const conjIchiい = ["ます", "ました", "ません", "ませんでした", "ましょう", "たい", "たかった", "たくない", "たくなかった"]
+    const conjListComplete = [
         "ます", "ました", "ません", "ませんでした",
-        "る", "ましょう",
+        "なかった", "ない", "る", "ましょう",
         "たい", "たかった", "たくない", "たくなかった",
         "られなかった", "られない", "られた", "られる",
         "られます", "られました", "られません", "られませんでした",
-        "う", "よう"
+        "う", "よう", "こと", "の",
+        "て", "た", "ないで",
     ]
-    const conjListComplete = conjListBig.concat(conjIchiう, conjIchiあ)
 
     // if ichidan: return a set of conjArrs based on last char 
     // else godan ' '
@@ -40,6 +41,17 @@ function giveConjugation(lastChar: string, activeVerbType: string) {
             case "ま":
             case "ら":
                 return { conjArr: conjIchiあ, conjCSSTag: "conjIchiあ" }
+                break;
+            case "い":
+            case "き":
+            case "ぎ":
+            case "し":
+            case "ち":
+            case "に":
+            case "び":
+            case "み":
+            case "り":
+                return { conjArr: conjIchiい, conjCSSTag: "conjIchiい" }
                 break;
             default:
                 return { conjArr: conjListComplete, conjCSSTag: "complete" };
