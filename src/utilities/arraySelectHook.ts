@@ -4,6 +4,7 @@ function giveConjugation(lastChar: string, activeVerbType: string) {
     const conjIchiう = ["こと", "の", "て", "た"]
     const conjIchiあ = ["ないで", "なかった", "ない"]
     const conjIchiい = ["ます", "ました", "ません", "ませんでした", "ましょう", "たい", "たかった", "たくない", "たくなかった"]
+    const conjIchiえ = ["ます", "ました", "ません", "ませんでした", "なかった", "ない", "る", "た"]
     const conjListComplete = [
         "ます", "ました", "ません", "ませんでした",
         "なかった", "ない", "る", "ましょう",
@@ -52,6 +53,17 @@ function giveConjugation(lastChar: string, activeVerbType: string) {
             case "み":
             case "り":
                 return { conjArr: conjIchiい, conjCSSTag: "conjIchiい" }
+                break;
+            case "え":
+            case "け":
+            case "げ":
+            case "せ":
+            case "て":
+            case "ね":
+            case "べ":
+            case "め":
+            case "れ":
+                return { conjArr: conjIchiえ, conjCSSTag: "conjIchiえ" }
                 break;
             default:
                 return { conjArr: conjListComplete, conjCSSTag: "complete" };

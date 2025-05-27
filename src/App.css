@@ -146,6 +146,10 @@
   background-color: hsl(295, 68%, 46%);
 }
 
+.text-box-conjIchiえ {
+  background-color: hsl(22, 65%, 49%);
+}
+
 .empty {
   background-color: var(--divgray);
 }
