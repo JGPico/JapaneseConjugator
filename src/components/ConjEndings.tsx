@@ -4,9 +4,11 @@ interface TProps {
     text: string
     type: string
     lastChar: string
+    onHover: (text: string) => void
+    onLeave: () => void
 }
 
-const ConjEndings = ({ text, type, lastChar }: TProps) => {
+const ConjEndings = ({ text, type, lastChar, onHover, onLeave }: TProps) => {
 
     let cssClass;
     const subConjArr = giveConjugation(lastChar, type)
@@ -19,7 +21,9 @@ const ConjEndings = ({ text, type, lastChar }: TProps) => {
     }
 
     return (
-        <div className="text-box">
+        <div className="text-box"
+            onMouseEnter={() => onHover(text)}
+            onMouseLeave={onLeave}>
             <p className={cssClass}>{text}</p>
         </div>
     )

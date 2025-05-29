@@ -29,8 +29,9 @@ function App() {
   const [activeVerbType, setActiveVerbType] = useState("ichidan");
   const conjListComplete = giveConjugation("complete", "ichidan").conjArr
   const [displayArray, setDisplayArray] = useState<charObj[]>([]);
+  const [hoveredDisplayArray, setHoveredDisplayArray] = useState<charObj[]>([]);
 
-  const [lastChar, setLastChar] = useState("empty");
+  const [lastChar, setLastChar] = useState<string>("empty");
   const wordArray = genWordArray(wordList);
   const charArray = genWordArray(charList);
   const conjArray = genWordArray(conjListComplete);
@@ -72,10 +73,23 @@ function App() {
     setLastChar(tempArr.slice(-1)[0].jword);
     setDisplayArray([...tempArr])
   }
+
+  const handleHover = (text: string) => {
+    const tempArr = [...displayArray];
+    for (const char of text) {
+      tempArr.push({ jword: char, id: Math.random() });
+    }
+    setHoveredDisplayArray([...displayArray, ...tempArr]);
+  }
+
+  const handleLeave = () => {
+    setHoveredDisplayArray(genWordArray([]));
+  } 
+
   // functions ***************
 
 
-  document.body.style = 'background:var(--backgroundgreen)';
+  document.body.style.backgroundColor = 'var(--backgroundgreen)';
 
   // TODO update WordDisplay component to allow displaying conjugations onHover of conjEndings component. 
 
@@ -89,12 +103,20 @@ function App() {
       <div className="wrapper">
 
         <div className="grid-display">
-          {displayArray.length > 0 ? displayArray.map((char) => {
+
+        {hoveredDisplayArray.length > 0 ? hoveredDisplayArray.map((char) => {
             const { jword, id } = char
             return (
               <WordDisplay
                 key={id}
                 jchar={jword}></WordDisplay>
+            )
+          }) : displayArray.length > 0 ? displayArray.map((char) => {
+            const { jword, id } = char
+            return (
+              <WordDisplay
+              key={id}
+              jchar={jword}></WordDisplay>
             )
           }) : <WordDisplay key={1} jchar={". . ."}></WordDisplay>}
         </div>
@@ -141,7 +163,14 @@ function App() {
           {conjArray.map((conj) => {
             const { jword, id } = conj
             return (
-              <ConjEndings key={id} text={jword} type={activeVerbType} lastChar={lastChar}></ConjEndings>
+              <ConjEndings 
+                key={id} 
+                text={jword} 
+                type={activeVerbType} 
+                lastChar={lastChar}
+                onHover={(text) => handleHover(text)}
+                onLeave={() => handleLeave()}
+              />
             )
           })}
         </div>
