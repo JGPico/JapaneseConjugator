@@ -40,6 +40,7 @@ function App() {
 
   const handleClear = () => {
     setDisplayArray(genWordArray([]));
+    setHoveredDisplayArray(genWordArray([]));
     setLastChar("empty");
     setActiveVerbType("ichidan");
   }
@@ -84,7 +85,7 @@ function App() {
 
   const handleLeave = () => {
     setHoveredDisplayArray(genWordArray([]));
-  } 
+  }
 
   // functions ***************
 
@@ -104,7 +105,7 @@ function App() {
 
         <div className="grid-display">
 
-        {hoveredDisplayArray.length > 0 ? hoveredDisplayArray.map((char) => {
+          {hoveredDisplayArray.length > 0 ? hoveredDisplayArray.map((char) => {
             const { jword, id } = char
             return (
               <WordDisplay
@@ -115,8 +116,8 @@ function App() {
             const { jword, id } = char
             return (
               <WordDisplay
-              key={id}
-              jchar={jword}></WordDisplay>
+                key={id}
+                jchar={jword}></WordDisplay>
             )
           }) : <WordDisplay key={1} jchar={". . ."}></WordDisplay>}
         </div>
@@ -163,10 +164,10 @@ function App() {
           {conjArray.map((conj) => {
             const { jword, id } = conj
             return (
-              <ConjEndings 
-                key={id} 
-                text={jword} 
-                type={activeVerbType} 
+              <ConjEndings
+                key={id}
+                text={jword}
+                type={activeVerbType}
                 lastChar={lastChar}
                 onHover={(text) => handleHover(text)}
                 onLeave={() => handleLeave()}
