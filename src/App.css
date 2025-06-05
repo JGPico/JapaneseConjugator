@@ -144,28 +144,33 @@
   pointer-events: none;
 }
 
-.text-box-conjIchiう {
+.text-box-conjう {
   background-color: hsl(241, 76%, 53%);
   pointer-events: auto;
 }
 
-.text-box-conjIchiあ {
+.text-box-conjGoあ {
   background-color: hsl(110, 68%, 46%);
   pointer-events: auto;
 }
 
-.text-box-conjIchiい {
+.text-box-conjGoい {
   background-color: hsl(295, 68%, 46%);
   pointer-events: auto;
 }
 
-.text-box-conjIchiえ {
+.text-box-conjGoえ {
   background-color: hsl(22, 65%, 49%);
   pointer-events: auto;
 }
 
-.text-box-conjIchiお {
+.text-box-conjGoお {
   background-color: hsl(51, 65%, 49%);
+  pointer-events: auto;
+}
+
+.text-box-conjIchiAll {
+  background-color: hsl(239, 65%, 49%);
   pointer-events: auto;
 }
 
