@@ -80,7 +80,7 @@ function App() {
     for (const char of text) {
       tempArr.push({ jword: char, id: Math.random() });
     }
-    setHoveredDisplayArray([...displayArray, ...tempArr]);
+    setHoveredDisplayArray([...tempArr]);
   }
 
   const handleLeave = () => {
@@ -104,6 +104,8 @@ function App() {
       <div className="wrapper">
 
         <div className="grid-display">
+
+
 
           {hoveredDisplayArray.length > 0 ? hoveredDisplayArray.map((char) => {
             const { jword, id } = char

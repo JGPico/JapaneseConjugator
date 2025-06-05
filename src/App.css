@@ -164,6 +164,11 @@
   pointer-events: auto;
 }
 
+.text-box-conjIchiお {
+  background-color: hsl(51, 65%, 49%);
+  pointer-events: auto;
+}
+
 .empty {
   background-color: var(--divgray);
 }
