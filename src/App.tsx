@@ -26,7 +26,7 @@ function App() {
     "お", "こ", "ご", "そ", "と", "の", "ぼ", "も", "ろ",
     "や", "ゆ", "よ", "わ", "を", "ん"];
 
-  const [activeVerbType, setActiveVerbType] = useState("ichidan");
+  const [activeVerbType, setActiveVerbType] = useState("godan");
   const conjListComplete = giveConjugation("complete", "godan").conjArr
   const [displayArray, setDisplayArray] = useState<charObj[]>([]);
   const [hoveredDisplayArray, setHoveredDisplayArray] = useState<charObj[]>([]);
