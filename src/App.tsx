@@ -134,15 +134,25 @@ function App() {
         </div>
 
         <div className="grid-letters">
-          {charArray.map((char) => {
+          {charArray.map((char, idx) => {
             const { jword, id } = char
+            // Calculate column index (0-based)
+            const colCount = 9;
+            const charIdx = idx;
+            const charCol = charIdx % colCount;
+            // Find lastChar index and column
+            const lastCharIdx = charArray.findIndex(c => c.jword === lastChar);
+            const lastCharCol = lastCharIdx !== -1 ? lastCharIdx % colCount : -1;
+            // Only enable if same column as lastChar, or if lastChar is 'empty' or not found
+            const isEnabled = lastChar === "empty" || lastCharCol === -1 || charCol === lastCharCol;
             return (
               <Card
                 key={id}
                 jword={jword}
-                type=""
                 lastChar={lastChar}
-                onClick={() => { handleClickLetter(jword) }}></Card>
+                onClick={() => { handleClickLetter(jword) }}
+                disabled={!isEnabled}
+              ></Card>
             )
           })}
         </div>
@@ -154,7 +164,6 @@ function App() {
               <Card
                 key={id}
                 jword={jword.word}
-                type={jword.type}
                 lastChar={lastChar}
                 onClick={() => { handleClickWord(jword.word, jword.type); }}></Card>
             )

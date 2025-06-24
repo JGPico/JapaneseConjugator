@@ -1,11 +1,11 @@
 interface CProps {
     jword: string
-    type: string
     lastChar: string
     onClick: () => void
+    disabled?: boolean
 }
 
-const Card = ({ jword, type, lastChar, onClick }: CProps) => {
+const Card = ({ jword, lastChar, onClick, disabled }: CProps) => {
 
     let cssClass;
 
@@ -17,7 +17,7 @@ const Card = ({ jword, type, lastChar, onClick }: CProps) => {
 
     return (
         <div className="card">
-            <button className={cssClass} onClick={onClick}>{jword}</button>
+            <button className={cssClass} onClick={onClick} disabled={disabled}>{jword}</button>
         </div>
     )
 }
