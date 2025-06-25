@@ -16,8 +16,8 @@ function App() {
 
   const wordList = [
     { word: "レモン", type: "ichidan" }, { word: "ライム", type: "ichidan" }, { word: "泳ぐ", type: "godan" },
-    { word: "食べる", type: "ichidan " }, { word: "守る", type: "godan" }, { word: "読む", type: "ichidan" },
-    { word: "寝る", type: "ichidan" }, { word: "飲む", type: "ichidan" }];
+    { word: "食べる", type: "ichidan " }, { word: "守る", type: "godan" }, { word: "読む", type: "godan" },
+    { word: "寝る", type: "ichidan" }, { word: "飲む", type: "godan" }];
   const charList = [
     "あ", "か", "が", "さ", "た", "な", "ば", "ま", "ら",
     "い", "き", "ぎ", "し", "ち", "に", "び", "み", "り",
@@ -138,8 +138,7 @@ function App() {
             const { jword, id } = char
             // Calculate column index (0-based)
             const colCount = 9;
-            const charIdx = idx;
-            const charCol = charIdx % colCount;
+            const charCol = idx % colCount;
             // Find lastChar index and column
             const lastCharIdx = charArray.findIndex(c => c.jword === lastChar);
             const lastCharCol = lastCharIdx !== -1 ? lastCharIdx % colCount : -1;
