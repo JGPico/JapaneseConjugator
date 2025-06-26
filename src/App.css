@@ -306,3 +306,10 @@
     border-radius: 6px;
   }
 }
+
+.letter-button-default[disabled], .letter-button-highlight[disabled] {
+  background-color: #b0b0b0 !important;
+  color: #f0f0f0 !important;
+  opacity: 0.7;
+  cursor: not-allowed;
+}

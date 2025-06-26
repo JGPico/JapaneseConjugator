@@ -18,6 +18,15 @@ function App() {
     { word: "レモン", type: "ichidan" }, { word: "ライム", type: "ichidan" }, { word: "泳ぐ", type: "godan" },
     { word: "食べる", type: "ichidan " }, { word: "守る", type: "godan" }, { word: "読む", type: "godan" },
     { word: "寝る", type: "ichidan" }, { word: "飲む", type: "godan" }];
+  const あList = ["あ", "い", "う", "え", "お", "や"]
+  const かList = ["か", "き", "く", "け", "こ"]
+  const がList = ["が", "ぎ", "ぐ", "げ", "ご"]
+  const さList = ["さ", "し", "す", "せ", "そ"]
+  const たList = ["た", "ち", "つ", "て", "と"]
+  const なList = ["な", "に", "ぬ", "ね", "の"]
+  const ばList = ["ば", "び", "ぶ", "べ", "ぼ"]
+  const まList = ["ま", "み", "む", "め", "も"]
+  const らList = ["ら", "り", "る", "れ", "ろ"]
   const charList = [
     "あ", "か", "が", "さ", "た", "な", "ば", "ま", "ら",
     "い", "き", "ぎ", "し", "ち", "に", "び", "み", "り",
@@ -26,7 +35,7 @@ function App() {
     "お", "こ", "ご", "そ", "と", "の", "ぼ", "も", "ろ",
     "や", "ゆ", "よ", "わ", "を", "ん"];
 
-  const [activeVerbType, setActiveVerbType] = useState("godan");
+  const [activeVerbType, setActiveVerbType] = useState("ichidan");
   const conjListComplete = giveConjugation("complete", "godan").conjArr
   const [displayArray, setDisplayArray] = useState<charObj[]>([]);
   const [hoveredDisplayArray, setHoveredDisplayArray] = useState<charObj[]>([]);
@@ -134,16 +143,14 @@ function App() {
         </div>
 
         <div className="grid-letters">
-          {charArray.map((char, idx) => {
+          {charArray.map((char) => {
             const { jword, id } = char
-            // Calculate column index (0-based)
-            const colCount = 9;
-            const charCol = idx % colCount;
-            // Find lastChar index and column
-            const lastCharIdx = charArray.findIndex(c => c.jword === lastChar);
-            const lastCharCol = lastCharIdx !== -1 ? lastCharIdx % colCount : -1;
-            // Only enable if same column as lastChar, or if lastChar is 'empty' or not found
-            const isEnabled = lastChar === "empty" || lastCharCol === -1 || charCol === lastCharCol;
+            // Helper: find which list a character belongs to
+            const lists = [あList, かList, がList, さList, たList, なList, ばList, まList, らList];
+            // Find the list containing lastChar
+            const lastCharList = lists.find(list => list.includes(lastChar));
+            // If lastChar is 'empty' or not found in any list, enable all
+            const isEnabled = lastChar === "empty" || !lastCharList || lastCharList.includes(jword);
             return (
               <Card
                 key={id}
