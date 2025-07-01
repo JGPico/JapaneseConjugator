@@ -1,3 +1,4 @@
+import './ConjEndings.css'
 import giveConjugation from "../utilities/arraySelectHook"
 
 interface TProps {

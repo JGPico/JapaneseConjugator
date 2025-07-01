@@ -50,26 +50,6 @@
   background: var(--divgray);
 }
 
-.letter-button-default {
-  margin-left: .1rem;
-  margin-right: .1rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  font-size: 30px;
-  background-color: hsl(0, 0%, 84%);
-  color: black;
-}
-
-.letter-button-highlight {
-  margin-left: .1rem;
-  margin-right: .1rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  font-size: 30px;
-  background-color: hsl(241, 95%, 22%);
-  color: hsl(182, 71%, 91%);
-}
-
 .grid-verbs {
   grid-area: verb;
   gap: 1.25rem;
@@ -188,10 +168,6 @@
   }
 }
 
-.card {
-  padding: .9em;
-}
-
 .read-the-docs {
   color: #888;
 }
@@ -305,11 +281,4 @@
     padding: 0.25rem 0.5rem;
     border-radius: 6px;
   }
-}
-
-.letter-button-default[disabled], .letter-button-highlight[disabled] {
-  background-color: #b0b0b0 !important;
-  color: #f0f0f0 !important;
-  opacity: 0.7;
-  cursor: not-allowed;
 }

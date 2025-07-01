@@ -1,3 +1,5 @@
+import './WordDisplay.css'
+
 interface CProps {
     jchar: string
 }
