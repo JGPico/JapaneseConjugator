@@ -8,7 +8,8 @@ app.get('/', async (request, response) => {
     response.send(await readFile('./hello2.txt', 'utf8'))
 });
 
-app.listen(process.env.PORT || 3000, () => console.log(`App available on http://localhost:3000`))
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`App available on http://localhost:${PORT}`));
 // const { readFile, readFileSync } = require('fs');
 
 
