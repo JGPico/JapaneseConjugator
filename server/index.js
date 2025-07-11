@@ -1,36 +1,31 @@
-console.log(process.platform);
 const express = require('express');
+const pool = require('./db');
 const app = express();
-const { readFile } = require('fs').promises;
 
-// promises are better than callbacks
-app.get('/', async (request, response) => {
-    response.send(await readFile('./hello2.txt', 'utf8'))
+app.use(express.json());
+
+// routes
+app.get('/', async (req, res) => {
+    res.sendStatus(200);
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`App available on http://localhost:${PORT}`));
-// const { readFile, readFileSync } = require('fs');
+app.post('/', async (req, res) => {
+    const { name, location } = req.body;
+    res.status(200).json({
+        message: `YOUR KEYS WERE ${name} and ${location}`,
+    })
+    // const result = await pool.query('SELECT * FROM words WHERE word = $1', [word]);
+    // res.json(result.rows);
+});
 
+app.get('/setup', async (req, res) => {
+    try {
+        //await pool.query('CREATE TABLE words( id SERIAL PRIMARY KEY, word VARCHAR(255) NOT NULL)')
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
 
-// const chs = readFileSync('./hello.txt')
-// console.log("This is readfileSync: " + chs);
-
-// // callback fn for async-ness
-// readFile('./hello.txt', 'utf8', (err, txt) => {
-//     console.log("This is readFile: " + txt);
-// });
-
-// promise for async-ness
-
-async function hello() {
-    const file = await readFile('./hello.txt', 'utf8');
-    console.log("File: " + file);
-}
-
-hello();
-console.log("Do this ASAP");
-
-const myModule = require('./my-module');
-console.log(myModule);
-console.log("myModule: " + JSON.stringify(myModule));
+const PORT = process.env.PORT || 1337;
+app.listen(PORT, () => console.log(`Japanese Conjugator App available on http://localhost:${PORT}`));
