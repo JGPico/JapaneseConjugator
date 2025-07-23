@@ -1,54 +1,184 @@
-# React + TypeScript + Vite
+# Japanese Conjugator
 
-Minimal setup to get React working in Vite with HMR and some ESLint rules.
+A web application for exploring and learning Japanese verb conjugation patterns.
 
-Currently, two official plugins are available:
+This project consists of a React + TypeScript frontend (using Vite) and an Express + PostgreSQL backend.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Table of Contents
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- [Prerequisites](#prerequisites)
+- [Project Structure](#project-structure)
+- [Setup Instructions](#setup-instructions)
+  - [Frontend](#frontend)
+  - [Backend](#backend)
+- [Running the App](#running-the-app)
+  - [Frontend](#running-the-frontend)
+  - [Backend](#running-the-backend)
+- [Running Tests](#running-tests)
+- [Linting](#linting)
+- [Backend Environment Variables](#backend-environment-variables)
+- [Database Setup](#database-setup)
+- [Useful Tips](#useful-tips)
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+---
+
+## Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18+ recommended)
+- [npm](https://www.npmjs.com/) (comes with Node.js)
+- [PostgreSQL](https://www.postgresql.org/) (for backend)
+
+---
+
+## Project Structure
+
+```
+JapaneseConjugator/
+  ├─ src/                # Frontend source code (React)
+  ├─ server/             # Backend source code (Express, PostgreSQL)
+  ├─ public/             # Static assets
+  ├─ package.json        # Frontend dependencies and scripts
+  ├─ server/package.json # Backend dependencies and scripts
+  └─ ...
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Setup Instructions
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+### Frontend
+
+1. **Install dependencies:**
+   ```sh
+   npm install
+   ```
+
+### Backend
+
+1. **Install dependencies:**
+   ```sh
+   cd server
+   npm install
+   ```
+
+---
+
+## Running the App
+
+### Running the Frontend
+
+Start the development server (with hot module reload):
+
+```sh
+npm run dev
 ```
+
+The app will be available at [http://localhost:5173](http://localhost:5173) by default.
+
+### Running the Backend
+
+Start the Express server:
+
+```sh
+cd server
+npm run dev
+```
+
+The backend will be available at [http://localhost:1337](http://localhost:1337) by default.
+
+#### Setting the Server Port
+
+You can set the `PORT` environment variable to change the backend port:
+
+- **Windows (Command Prompt):**
+  ```sh
+  set PORT=5000 && npm run dev
+  ```
+- **Windows (PowerShell):**
+  ```sh
+  $env:PORT=5000; npm run dev
+  ```
+- **Unix/Linux/macOS:**
+  ```sh
+  PORT=5000 npm run dev
+  ```
+
+---
+
+## Running Tests
+
+### Frontend Tests
+
+- **Run all tests:**
+  ```sh
+  npm test
+  ```
+- **Interactive UI mode:**
+  ```sh
+  npm run test:ui
+  ```
+- **Test coverage report:**
+  ```sh
+  npm run test:coverage
+  ```
+
+### Backend Tests
+
+No backend tests are implemented yet.
+
+---
+
+## Linting
+
+Run ESLint to check for code quality issues:
+
+```sh
+npm run lint
+```
+
+---
+
+## Backend Environment Variables
+
+- `PORT`: Port for the Express server (defaults to 1337 if not set).
+- **Database connection** is currently hardcoded in `server/db.js`:
+  - host: `db`
+  - port: `5432`
+  - user: `postgres`
+  - password: `123456`
+  - database: `japaneseconjugator`
+
+You may need to update these values to match your local PostgreSQL setup.
+
+---
+
+## Database Setup
+
+1. **Ensure PostgreSQL is running.**
+2. **Create the database:**
+   ```sql
+   CREATE DATABASE japaneseconjugator;
+   ```
+3. **(Optional) Create the user and set password:**
+   ```sql
+   CREATE USER postgres WITH PASSWORD '123456';
+   GRANT ALL PRIVILEGES ON DATABASE japaneseconjugator TO postgres;
+   ```
+4. **(Optional) Create tables:**
+   You can add table creation logic in `server/index.js` or connect to the database and create tables manually.
+
+---
+
+## Useful Tips
+
+- The frontend and backend run independently. You may need to configure CORS or proxy settings for API calls in development.
+- Update database credentials in `server/db.js` as needed for your environment.
+- For production, consider using environment variables for sensitive data and a process manager (like PM2) for the backend.
+
+---
+
+## License
+
+See [LICENSE](LICENSE).
